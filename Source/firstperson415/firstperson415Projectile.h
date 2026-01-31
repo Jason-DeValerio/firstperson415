@@ -25,7 +25,7 @@ class Afirstperson415Projectile : public AActor
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* ballMesh;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	UMaterial* baseMat;
 
 	UPROPERTY()

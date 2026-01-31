@@ -61,11 +61,14 @@ void Afirstperson415Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 	{
 		
 		float frameNum = UKismetMathLibrary::RandomFloatInRange(0.f, 3.f);
+		if (baseMat)
+		{
+			auto Decal = UGameplayStatics::SpawnDecalAtLocation(GetWorld(), baseMat, FVector(UKismetMathLibrary::RandomFloatInRange(20.f, 40.f)), Hit.Location, Hit.Normal.Rotation(), 0.f);
+			auto MatInstance = Decal->CreateDynamicMaterialInstance();
 
-		auto Decal = UGameplayStatics::SpawnDecalAtLocation(GetWorld(), baseMat, FVector(UKismetMathLibrary::RandomFloatInRange(20.f, 40.f)), Hit.Location, Hit.Normal.Rotation(), 0.f);
-		auto MatInstance = Decal->CreateDynamicMaterialInstance();
-
-		MatInstance->SetVectorParameterValue("Color", randColor);
-		MatInstance->SetScalarParameterValue("Frame", frameNum);
+			MatInstance->SetVectorParameterValue("Color", randColor);
+			MatInstance->SetScalarParameterValue("Frame", frameNum);
+		}
+		
 	}
 }
