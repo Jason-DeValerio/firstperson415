@@ -66,11 +66,11 @@ void Afirstperson415Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 			UNiagaraComponent* particleComp = UNiagaraFunctionLibrary::SpawnSystemAttached(colorP, HitComp, NAME_None, FVector(-20.f, 0.f, 0.f), FRotator(0.f), EAttachLocation::KeepRelativeOffset, true);
 
 			particleComp->SetNiagaraVariableLinearColor(FString("RandomColor"), randColor);
-
-			ballMesh->DestroyComponent();
-
-			CollisionComp->BodyInstance.SetCollisionProfileName("NoCollision");
 		}
+
+		ballMesh->DestroyComponent();
+
+		CollisionComp->BodyInstance.SetCollisionProfileName("NoCollision");
 
 
 		float frameNum = UKismetMathLibrary::RandomFloatInRange(0.f, 3.f);
